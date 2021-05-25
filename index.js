@@ -29,11 +29,12 @@ const INDEX = '/index.html'
 server.use(express.urlencoded({extended: true}))
 server.use(express.json())
 server.use(express.static(path.join(__dirname ,'index.html')))
-const app = relay({'server':server});
 server.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/index.html'))
 })
-
+server.listen(port, function() {
+    console.log("Web server listening on port: " + port)
+})
 server.post('/', function(req, res) {
     to_number = req.body.num1
     user_id = req.body.user_id
@@ -70,7 +71,7 @@ function send_text(message, to_number){
             })
         .then(message => console.log(message.sid));
 }
-
+const app = relay({'server':server});
 app.workflow(`twilio`, relay => {
     console.log("app is hosted and running")
     let message = ''
@@ -132,8 +133,4 @@ app.workflow(`twilio`, relay => {
             }
         }
     })
-})
-
-server.listen(port, function() {
-    console.log("Web server listening on port: " + port)
 })
