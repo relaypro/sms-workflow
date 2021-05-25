@@ -71,7 +71,7 @@ function send_text(message, to_number){
         .then(message => console.log(message.sid));
 }
 
-const app = relay(server);
+const app = relay();
 app.workflow(`twilio`, relay => {
     console.log("app is hosted and running")
     let message = ''
