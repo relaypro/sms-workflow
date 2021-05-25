@@ -58,10 +58,6 @@ server.post('/', function(req, res) {
     })
 })
 
-server.listen(port, function() {
-    console.log("Web server listening on port: " + port)
-})
-
 
 const client = new twilio(accountSid, authToken)
 function send_text(message, to_number){
@@ -137,4 +133,8 @@ app.workflow(`twilio`, relay => {
             }
         }
     })
+})
+
+server.listen(port, function() {
+    console.log("Web server listening on port: " + port)
 })
