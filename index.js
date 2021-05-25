@@ -29,7 +29,7 @@ const INDEX = '/index.html'
 server.use(express.urlencoded({extended: true}))
 server.use(express.json())
 server.use(express.static(path.join(__dirname ,'index.html')))
-
+const app = relay({'server':server});
 server.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/index.html'))
 })
@@ -71,7 +71,6 @@ function send_text(message, to_number){
         .then(message => console.log(message.sid));
 }
 
-const app = relay({'server':server});
 app.workflow(`twilio`, relay => {
     console.log("app is hosted and running")
     let message = ''
