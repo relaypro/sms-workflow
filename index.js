@@ -5,7 +5,7 @@ import { relay } from '@relaypro/sdk'
 import twilio from './workflows/twilio.js'
 import SmsDB from './schemas/SmsDB.js'
 import parseNumber from 'phone'
-import alert from 'alert'
+import alert from 'sweetalert2'
     
 const port = process.env.PORT || 3000
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -30,7 +30,7 @@ server.post('/', function(req, res) {
 
     let number = parseNumber(req.body.num1, 'USA')
     if (number.length === 0) {
-        alert("Phone number not recognized, please try again")
+        alert.fire("Number not recognized, please try again")
         res.redirect('/')
     } else {
         console.log(number)
