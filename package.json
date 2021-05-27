@@ -12,9 +12,13 @@
   "license": "ISC",
   "dependencies": {
     "@relaypro/sdk": "^1.0.2",
+    "alert": "^5.0.10",
     "express": "^4.17.1",
+    "jsdom": "^16.6.0",
+    "libphonenumber-js": "^1.9.19",
     "mongoose": "^5.12.11",
     "path": "^0.12.7",
+    "phone": "^2.4.21",
     "twilio": "^3.63.0",
     "url": "^0.11.0"
   }
