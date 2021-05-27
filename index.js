@@ -19,6 +19,10 @@ server.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/index.html'))
 })
 
+server.get('/main.js', function(req, res) {
+    res.sendFile(path.join(__dirname, '/main.js'))
+})
+
 server.post('/', function(req, res) {
     console.log("user number recieved: " + req.body.num1)
     console.log("userID recieved: " + req.body.user_id)
