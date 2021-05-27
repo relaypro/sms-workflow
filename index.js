@@ -31,7 +31,7 @@ server.post('/', function(req, res) {
     let number = parseNumber(req.body.num1, 'USA')
     if (number.length === 0) {
         alert.fire("Number not recognized, please try again")
-        //res.redirect('/')
+        res.redirect('/')
     } else {
         console.log(number)
         const post = new SmsDB({
