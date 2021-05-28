@@ -27,6 +27,15 @@ _server.get('/id/:id', function(req, res) {
     res.sendFile(path.join(__dirname, '/noID.html'))
 })
 
+_server.get('/generate', function(req, res) {
+    res.sendFile(path.join(__dirname, '/generate.html'))
+})
+
+_server.post('/generate', function(req, res) {
+    let device_id = req.body.user_id
+    let url = "relay-sms.herokuapp.com/id/" + device_id.toString()
+    res.send("<div><p>" + url + "<p></div>")
+})
 _server.get('/main.js', function(req, res) {
     res.sendFile(path.join(__dirname, '/main.js'))
 })
