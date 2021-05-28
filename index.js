@@ -52,8 +52,7 @@ _server.post('/', function(req, res) {
 })
 
 _server.post('/msg', function(req, res) {
-    let data = req.body
-    console.log(data)
+    let data = req.body.Body
     eventEmitter.emit(`http_event`, data)
     res.status(200)
 })
