@@ -24,7 +24,7 @@ _server.get('/', function(req, res) {
 
 _server.get('/id/:id', function(req, res) {
     id = req.params.id
-    res.sendFile(path.join(__dirname, '/index.html'))
+    res.sendFile(path.join(__dirname, '/noID.html'))
 })
 
 _server.get('/main.js', function(req, res) {
