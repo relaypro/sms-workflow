@@ -12,6 +12,7 @@ export const eventEmitter = new EventEmitter()
 const port = process.env.PORT || 3000
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const _server = express()
+let id = null
 
 _server.use(express.urlencoded({extended: true}))
 _server.use(express.json())
@@ -21,15 +22,19 @@ _server.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/index.html'))
 })
 
+_server.get('/id/:id', function(req, res) {
+    id = req.params.id
+    res.sendFile(path.join(__dirname, '/index.html'))
+})
+
 _server.get('/main.js', function(req, res) {
     res.sendFile(path.join(__dirname, '/main.js'))
 })
 
 _server.post('/', function(req, res) {
     console.log("user number recieved: " + req.body.num1)
-    console.log("userID recieved: " + req.body.user_id)
     console.log("name recieved: " + req.body.name)
-
+    id = req.body.user_id ? req.body.user_id : id 
     let number = parseNumber(req.body.num1, 'USA')
     if (number.length === 0) {
         alert.fire("Number not recognized, please try again")
@@ -38,7 +43,7 @@ _server.post('/', function(req, res) {
         console.log(number)
         const post = new SmsDB({
             name: req.body.name,
-            user_id: req.body.user_id,
+            user_id: id,
             number: req.body.num1
         })
         post.save(function(err){
