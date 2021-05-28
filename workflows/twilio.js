@@ -53,8 +53,9 @@ const createApp = (relay) => {
             console.log(`phone number is ${to_number}`)
             await relay.say(`What is ${to_number}'s name?`)
             name = await relay.listen(["iPhone", "Leena", "Ibraheem"])
+            name = name.text
         }
-        await relay.say(`Tap once to send ${name.text} a message. Double tap to exit`)
+        await relay.say(`Tap once to send ${name} a message. Double tap to exit`)
     })
 
     relay.on(`button`, async (button, taps) => {
