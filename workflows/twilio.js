@@ -87,7 +87,6 @@ const createApp = (relay) => {
     })
 
     eventEmitter.on(`http_event`, async (text) => {
-        console.log(`got http event`)
         console.log(`http_event received ${text}`)
         await relay.say(`${name} responded with ${text}`)
         await relay.say(`Tap once to reply.`)
