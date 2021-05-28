@@ -6,24 +6,26 @@ import twilio from './workflows/twilio.js'
 import SmsDB from './schemas/SmsDB.js'
 import parseNumber from 'phone'
 import alert from 'sweetalert2'
-    
+import EventEmitter from 'events'
+
+export const eventEmitter = new EventEmitter()    
 const port = process.env.PORT || 3000
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const server = express()
+const _server = express()
 
-server.use(express.urlencoded({extended: true}))
-server.use(express.json())
-server.use(express.static(path.join(__dirname ,'index.html')))
+_server.use(express.urlencoded({extended: true}))
+_server.use(express.json())
+_server.use(express.static(path.join(__dirname ,'index.html')))
 
-server.get('/', function(req, res) {
+_server.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/index.html'))
 })
 
-server.get('/main.js', function(req, res) {
+_server.get('/main.js', function(req, res) {
     res.sendFile(path.join(__dirname, '/main.js'))
 })
 
-server.post('/', function(req, res) {
+_server.post('/', function(req, res) {
     console.log("user number recieved: " + req.body.num1)
     console.log("userID recieved: " + req.body.user_id)
     console.log("name recieved: " + req.body.name)
@@ -49,14 +51,16 @@ server.post('/', function(req, res) {
     }
 })
 
-server.post('/msg', function(req, res) {
-    console.log(res.body)
-    res.status(200).end()
+_server.post('/msg', function(req, res) {
+    let data = req.body
+    console.log(data)
+    eventEmitter.emit(`http_event`, data)
+    res.status(200)
 })
 
-server.listen(port, function() {
+const server = _server.listen(port, function() {
     console.log("Web server listening on port: " + port)
 })
 
-const app = relay()
+const app = relay({server})
 app.workflow(`twilio`, twilio)
