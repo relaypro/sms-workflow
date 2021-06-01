@@ -1,17 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Relay SMS service</title>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Relay SMS workflow</title>
+    <style type="text/css" media="screen">
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap');
+        body {
+            font-family: Montserrat,Arial, Helvetica, sans-serif;
+            background-color:#f7f7f7;
+        }
+        * {box-sizing: border-box}
+
+        /* Add padding to container elements */
+        .container {
+            padding: 20px;
+            width:500px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border:1px solid #ccc;
+            border-radius:10px;
+            background:white;
+        -webkit-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
+        -moz-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
+        box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
+        }
+
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f7f7f7;
+            font-family: Montserrat,Arial, Helvetica, sans-serif;
+        }
+        select {
+        width: 18%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f7f7f7;
+            font-family: Montserrat,Arial, Helvetica, sans-serif;
+        }
+
+        input[type=phone] {
+        width: 81%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f7f7f7;
+        }
+
+        input[type=text]:focus, input[type=password]:focus, input[type=phone]:focus, select:focus {
+        background-color: #ddd;
+        outline: none;
+        }
+
+
+
+        /* Set a style for all buttons */
+        button {
+        background-color: #0eb7f4;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+            font-size:16px;
+            font-family: Montserrat,Arial, Helvetica, sans-serif;
+            border-radius:10px;
+        }
+
+        button:hover {
+        opacity:1;
+        }
+
+        img {
+            padding: 14px 0;
+            margin: 0 0;
+            border: none;
+            cursor: pointer;
+            width: 50%;
+            border-radius:10px;
+        }
+
+
+        /* Change styles for signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+        .signupbtn {
+            width: 100%;
+        }
+        }
+    </style>
 </head>
 <body>
-    <h4>Relay SMS workflow service</h4>
-    <form action='/' method='post'>
-        <input type='text' name='num1' placeholder="number" id='num_input'>
-        <input type='text' name='name' placeholder="name" id='name_input'>
-        <button type='submit' name='submit'>Go</button>
+    <form action="/" method="post">
+        <div class="container">
+          <img src="/logo.png" alt="Relay Logo">
+          <h3>Relay SMS workflow service</h3>
+      
+          <label for="email"><b>Name</b></label>
+          <input type="text" name="name" placeholder="Enter name" id="name_input">
+
+          <label for="email"><b>Phone Number</b></label>
+          <br>
+          <select name="phoneCode" required>
+            <option selected="selected" value="+1">+1</option>
+            <option value="+44">+44</option>
+          </select>
+          <input type="phone" name="num1" placeholder="0123456789" required id="num_input">
+      
+          <p>By registering you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+      
+          <div class="clearfix">
+            <button type="submit" class="btn">Register</button>
+          </div>
+        </div>
     </form>
-    <script src="main.js" type="text/javascript"></script>
 </body>
 </html>
