@@ -10,7 +10,9 @@ The app is live at [relay-sms.herokuapp.com](http://relay-sms.herokuapp.com/)
 
 ### Paths
 `\` homepage
+
 `\generate` renders a page where you can generate a prepopulated url with id
+
 `\id\:id` renders a version of the homepage where device id is prepopulated in the backend
 
 ## Installation
@@ -55,11 +57,15 @@ npm start
 
 
 ## Future implementations
-[ ] Ability to repeat a message
-[ ] Multiple user texting: “text Chase” “text John”
-[ ] Phone texter should be able to initiate the conversation. Conversation should not be able to be terminated. eg. Manager should be able to Text a relay user at any time
-[ ] Use different phone numbers on Twilio side or ability to say who is sending a text on relay. (Assuming that at companies relays are being shared between shifts or something)
-[ ] Dockerize the application
+- [ ] Ability to repeat a message
+
+- [ ] Multiple user texting: “text Chase” “text John”
+
+- [ ] Phone texter should be able to initiate the conversation. Conversation should not be able to be terminated. eg. Manager should be able to Text a relay user at any time
+
+- [ ] Use different phone numbers on Twilio side or ability to say who is sending a text on relay. (Assuming that at companies relays are being shared between shifts or something)
+
+- [ ] Dockerize the application
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
