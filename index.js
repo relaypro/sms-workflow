@@ -9,8 +9,6 @@ import EventEmitter from 'events'
 import alert2 from 'alert'
 import ejs from 'ejs'
 
-
-
 export const eventEmitter = new EventEmitter()    
 const port = process.env.PORT || 3000
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
