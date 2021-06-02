@@ -57,7 +57,7 @@ npm start
 
 
 ## Future implementations
-- [ ] Ability to repeat a message
+- [x] Ability to repeat a message
 
 - [ ] Multiple user texting: “text Chase” “text John”
 
