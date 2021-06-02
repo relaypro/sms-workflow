@@ -34,8 +34,9 @@ _server.get('/generate', function(req, res) {
 _server.post('/generate', function(req, res) {
     let device_id = req.body.user_id
     let url = "relay-sms.herokuapp.com/id/" + device_id.toString()
-    alert2(url)
-    res.redirect("/generate")
+    //alert2(url)
+    res.send(url)
+    //res.redirect("/generate")
 })
 _server.get('/main.js', function(req, res) {
     res.sendFile(path.join(__dirname, '/main.js'))
@@ -47,6 +48,10 @@ _server.get('/style.css', function(req, res) {
 
 _server.get('/logo.png', function(req, res) {
     res.sendFile(path.join(__dirname, '/logo.png'))
+})
+
+_server.get('/favicon.png', function(req, res) {
+    res.sendFile(path.join(__dirname, '/favicon.png'))
 })
 
 _server.post('/', function(req, res) {
