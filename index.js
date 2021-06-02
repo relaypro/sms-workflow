@@ -37,8 +37,8 @@ _server.get('/generate', function(req, res) {
 
 _server.post('/generate', function(req, res) {
     let device_id = req.body.user_id
-    let url = "relay-sms.herokuapp.com/id/" + device_id.toString()
-    res.send(url)
+    let uri = "relay-sms.herokuapp.com/id/" + device_id.toString()
+    res.render("url", {url: uri})
 })
 _server.get('/main.js', function(req, res) {
     res.sendFile(path.join(__dirname, '/main.js'))
