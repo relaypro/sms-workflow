@@ -2,8 +2,14 @@ import twilio from 'twilio'
 import SmsDB from '../schemas/SmsDB.js'
 import parseNumber from 'phone'
 import {eventEmitter} from '../index.js'
+
+//const accountSid = process.env.TWILIO_ACCOUNT_ID
 const accountSid = `ACe5b6b3e01caea465fc78760921366664`
+
+//const authToken = process.env.TWILIO_AUTH_TOKEN
 const authToken = `73e1c25155f536afda22da2f1a6ff7dc`
+
+//const from_number = process.env.TWILIO_NUMBER
 const from_number = `+19199449992`
 let to_number = null
 let name = ''
