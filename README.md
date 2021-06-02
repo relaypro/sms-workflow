@@ -61,7 +61,7 @@ npm start
 
 - [ ] Multiple user texting: “text Chase” “text John”
 
-- [ ] Phone texter should be able to initiate the conversation. Conversation should not be able to be terminated. eg. Manager should be able to Text a relay user at any time
+- [x] Phone texter should be able to initiate the conversation. Conversation should not be able to be terminated. eg. Manager should be able to Text a relay user at any time
 
 - [ ] Use different phone numbers on Twilio side or ability to say who is sending a text on relay. (Assuming that at companies relays are being shared between shifts or something)
 
