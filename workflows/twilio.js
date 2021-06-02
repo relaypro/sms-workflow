@@ -82,7 +82,7 @@ const createApp = (relay) => {
                     message = ''
                 }
             } else if (button.taps === `double`) { 
-                await relay.say(`${name} responded with ${text}`)
+                await relay.say(`${name} responded with ${message}`)
                 //to_number = null
                 //await relay.terminate()
             }
