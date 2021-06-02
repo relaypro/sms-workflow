@@ -82,10 +82,9 @@ const createApp = (relay) => {
                     message = ''
                 }
             } else if (button.taps === `double`) { 
-                await relay.say(`Goodbye`)
-                await send_text(`Relay+ has ended the conversation`, to_number)
-                to_number = null
-                await relay.terminate()
+                await relay.say(`${name} responded with ${text}`)
+                //to_number = null
+                //await relay.terminate()
             }
         }
     })
@@ -93,7 +92,8 @@ const createApp = (relay) => {
     eventEmitter.on(`http_event`, async (text) => {
         console.log(`http_event received ${text}`)
         await relay.say(`${name} responded with ${text}`)
-        await relay.say(`Tap once to reply.`)
+        message = text
+        await relay.say(`Tap once to reply. Double tap to hear the message again`)
     })
 }
 
