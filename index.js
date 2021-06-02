@@ -7,51 +7,53 @@ import SmsDB from './schemas/SmsDB.js'
 import parseNumber from 'phone'
 import EventEmitter from 'events'
 import alert2 from 'alert'
+import ejs from 'ejs'
+
+
 
 export const eventEmitter = new EventEmitter()    
 const port = process.env.PORT || 3000
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const _server = express()
+_server.set('view engine', 'ejs')
 let id = null
 
 _server.use(express.urlencoded({extended: true}))
 _server.use(express.json())
-_server.use(express.static(path.join(__dirname ,'index.html')))
+_server.use(express.static(path.join(__dirname ,'views/index.html')))
 
 _server.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, '/index.html'))
+    res.sendFile(path.join(__dirname, '/views/index.html'))
 })
 
 _server.get('/id/:id', function(req, res) {
     id = req.params.id
-    res.sendFile(path.join(__dirname, '/noID.html'))
+    res.sendFile(path.join(__dirname, '/views/noID.html'))
 })
 
 _server.get('/generate', function(req, res) {
-    res.sendFile(path.join(__dirname, '/generate.html'))
+    res.sendFile(path.join(__dirname, '/views/generate.html'))
 })
 
 _server.post('/generate', function(req, res) {
     let device_id = req.body.user_id
     let url = "relay-sms.herokuapp.com/id/" + device_id.toString()
-    //alert2(url)
     res.send(url)
-    //res.redirect("/generate")
 })
 _server.get('/main.js', function(req, res) {
     res.sendFile(path.join(__dirname, '/main.js'))
 })
 
-_server.get('/style.css', function(req, res) {
-    res.sendFile(path.join(__dirname, '/style.css'))
+_server.get('/styles/style.css', function(req, res) {
+    res.sendFile(path.join(__dirname, '/styles/style.css'))
 })
 
-_server.get('/logo.png', function(req, res) {
-    res.sendFile(path.join(__dirname, '/logo.png'))
+_server.get('/assets/logo.png', function(req, res) {
+    res.sendFile(path.join(__dirname, '/assets/logo.png'))
 })
 
-_server.get('/favicon.png', function(req, res) {
-    res.sendFile(path.join(__dirname, '/favicon.png'))
+_server.get('assets/favicon.png', function(req, res) {
+    res.sendFile(path.join(__dirname, '/assets/favicon.png'))
 })
 
 _server.post('/', function(req, res) {
@@ -72,7 +74,7 @@ _server.post('/', function(req, res) {
         })
         post.save(function(err){
             if (!err){
-                res.sendFile(path.join(__dirname, '/recieved.html'))
+                res.sendFile(path.join(__dirname, '/views/recieved.html'))
             } else {
                 console.log(err)
             }
