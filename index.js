@@ -50,7 +50,7 @@ _server.get('/assets/logo.png', function(req, res) {
     res.sendFile(path.join(__dirname, '/assets/logo.png'))
 })
 
-_server.get('assets/favicon.png', function(req, res) {
+_server.get('/assets/favicon.png', function(req, res) {
     res.sendFile(path.join(__dirname, '/assets/favicon.png'))
 })
 
