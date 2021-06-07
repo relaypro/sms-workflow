@@ -85,6 +85,10 @@ const createApp = (relay) => {
                 await relay.say(`${name} responded with ${message}`)
                 //to_number = null
                 //await relay.terminate()
+            } else if (button.taps === `triple`) { 
+                to_number = null
+                await relay.say(`Goodbye`)
+                await relay.terminate()
             }
         }
     })
