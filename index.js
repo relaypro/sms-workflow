@@ -81,7 +81,7 @@ _server.post('/', function(req, res) {
     }
 })
 
-_server.post('/msg', function(req, res) {
+_server.post('/msg', async function(req, res) {
     let data = req.body.Body
     let sender_number = req.body.From.substring(2)
     await SmsDB.findOne({number: sender_number}, function(err, post){

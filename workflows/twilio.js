@@ -85,11 +85,17 @@ const createApp = (relay) => {
                 await relay.say(`${name} responded with ${message}`)
                 //to_number = null
                 //await relay.terminate()
-            } else if (button.taps === `triple`) { 
+            } else if (button.taps === `triple`) {
                 await send_text("Relay has ended the conversation", to_number)
                 await relay.say(`Goodbye`)
-                to_number = null
-                await relay.terminate()
+                await SmsDB.findOneAndUpdate({number: to_number.toString()}, {deleted: true}, async function(err, post){
+                    if (err) {
+                        console.log("could not set flag to deleted for: " + to_number)
+                    } else {
+                        to_number = null
+                        await relay.terminate()
+                    }
+                })
             }
         }
     })
