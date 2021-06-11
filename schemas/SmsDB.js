@@ -7,7 +7,8 @@ mongoose.connect(uri, {useNewUrlParser: true})
 const relayTwilioSchema = {
     name: String,
     user_id: String,
-    number: String
+    number: String,
+    deleted: Boolean
 }
 const SmsDB = mongoose.model("relaysms", relayTwilioSchema)
 export default SmsDB
