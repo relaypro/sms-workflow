@@ -24,6 +24,7 @@ function send_text(message, to_number){
 }
 
 const createApp = (relay) => {
+    let state = 0
     console.log("app is hosted and running")
     let message = '' 
     let new_message = true
@@ -82,9 +83,13 @@ const createApp = (relay) => {
                     message = ''
                 }
             } else if (button.taps === `double`) { 
-                await relay.say(`${name} responded with ${message}`)
-                //to_number = null
-                //await relay.terminate()
+                if (state === 0) {
+                    to_number = null
+                    await relay.say("Workflow has been terminated")
+                    await relay.terminate()
+                } else if (state === 1) {
+                    await relay.say(`${name} responded with ${message}`)
+                }
             } else if (button.taps === `triple`) {
                 await send_text("Relay has ended the conversation", to_number)
                 await relay.say(`Goodbye`)
@@ -101,6 +106,7 @@ const createApp = (relay) => {
     })
 
     eventEmitter.on(`http_event`, async (text) => {
+        state = 1 
         console.log(`http_event received ${text}`)
         await relay.say(`${name} responded with ${text}`)
         message = text
