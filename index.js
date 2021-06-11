@@ -68,7 +68,8 @@ _server.post('/', function(req, res) {
         const post = new SmsDB({
             name: req.body.name,
             user_id: id,
-            number: req.body.num1
+            number: req.body.num1,
+            deleted: false
         })
         post.save(function(err){
             if (!err){
@@ -80,9 +81,17 @@ _server.post('/', function(req, res) {
     }
 })
 
-_server.post('/msg', function(req, res) {
+_server.post('/msg', async function(req, res) {
     let data = req.body.Body
-    eventEmitter.emit(`http_event`, data)
+    let sender_number = req.body.From.substring(2)
+    await SmsDB.findOne({number: sender_number}, function(err, post){
+        if (post !== null) {
+            console.log(post)
+            if (!post.deleted) {
+                eventEmitter.emit(`http_event`, data)
+            }
+        }
+    })
     res.status(200)
 })
 
