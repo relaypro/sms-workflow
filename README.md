@@ -4,10 +4,11 @@
 User can navigate to a URL and enter a phone number.
 Then, the user can trigger workflow with a phrase (eg. Text)
 Allows user to send/receive messages from Relay to given phone number.
-<s>Terminates with double tap</s> (deprecated)
 
 The app is live at [relay-sms.herokuapp.com](http://relay-sms.herokuapp.com/)
 
+## Simplified Workflow Architecture
+![architecture diagram](https://github.com/relaypro/sms-workflow/blob/main/assets/arch_diagram.png)
 ### Paths
 `\` homepage
 
