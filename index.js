@@ -20,9 +20,11 @@ _server.use(express.urlencoded({extended: true}))
 _server.use(express.json())
 _server.use(express.static(path.join(__dirname ,'views/index.html')))
 
+/*
 _server.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/views/index.html'))
 })
+*/
 
 _server.get('/id/:id', function(req, res) {
     id = req.params.id
