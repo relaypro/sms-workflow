@@ -97,6 +97,11 @@ _server.post('/msg', async function(req, res) {
     })
 })
 
+_server.post('/clear', async function(req, res) {
+    res.redirect('/generate')
+    await SmsDB.remove({})
+})
+
 const server = _server.listen(port, function() {
     console.log("Web server listening on port: " + port)
 })
